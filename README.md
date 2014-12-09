@@ -158,4 +158,18 @@ Value:
 #get uncomment
 Request URL:
 http://0.0.0.0:3000/api/numessages/5486ac92c83d2d5f5aafa8d8/nucomments
+Response Body:
+[
+  {
+    "url": "http://ookon_test001.nuweb.cc/Site/wheeg7/Forum/forum_view.php?mode=far&path=GROUP_NEWS/&f=2014113&i=1",
+    "uid": "wheechen",
+    "upload_time": "2014-12-02T10:04:57.000Z",
+    "time": "2014-12-02T10:04:57.000Z",
+    "owner": "wheechen",
+    "content": "ggggggguuu",
+    "atc": "",
+    "id": "5486aca9c83d2d5f5aafa8d9",
+    "numessageId": "5486ac92c83d2d5f5aafa8d8"
+  }
+]
 ```
