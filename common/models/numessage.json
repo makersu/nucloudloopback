@@ -1,0 +1,103 @@
+{
+  "name": "numessage",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "view_path": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "required": true
+    },
+    "upload_time": {
+      "type": "date",
+      "required": true
+    },
+    "page_name": {
+      "type": "string",
+      "required": true
+    },
+    "filename": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "allow": {
+      "type": "string",
+      "required": true
+    },
+    "owner": {
+      "type": "string",
+      "required": true
+    },
+    "last_acn": {
+      "type": "string"
+    },
+    "dir_type": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "share_code": {
+      "type": "string"
+    },
+    "share_date": {
+      "type": "string"
+    },
+    "share": {
+      "type": "string"
+    },
+    "use_acn": {
+      "type": "string"
+    },
+    "use_date": {
+      "type": "string"
+    },
+    "fun": {
+      "type": "string",
+      "required": true
+    },
+    "key": {
+      "type": "array",
+      "required": true
+    },
+    "images": {
+      "type": "string"
+    },
+    "atc": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "time": {
+      "type": "date",
+      "required": true
+    },
+    "mtime": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+     "nucomments": {
+      "type": "hasMany",
+      "model": "nucomment",
+      "foreignKey": "numessageId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

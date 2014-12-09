@@ -1,0 +1,38 @@
+{
+  "name": "nucomment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "uid": {
+      "type": "string",
+      "required": true
+    },
+    "upload_time": {
+      "type": "date",
+      "required": true
+    },
+    "time": {
+      "type": "date",
+      "required": true
+    },
+    "owner": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "atc": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
