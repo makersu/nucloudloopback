@@ -203,7 +203,7 @@ Value:
   "type": "1"
 }
 
-#
+#get
 Request URL
 http://0.0.0.0:3000/api/nusites
 Response Body
@@ -231,5 +231,16 @@ Response Body
   }
 ]
 
-
+#get filter
+Request URL:
+http://0.0.0.0:3000/api/nusites
+filter:
+{
+	"fields":"site_id", 
+	"where": { "or" : [
+			{"use_acn": {"inq": ["mark"]}},
+			{"share": {"inq": ["mark"]}}
+		]
+	}
+}
 ```
