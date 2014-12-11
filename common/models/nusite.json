@@ -1,0 +1,57 @@
+{
+  "name": "nusite",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "site_id": {
+      "type": "string",
+      "required": true
+    },
+    "public": {
+      "type": "boolean",
+      "required": true
+    },
+    "use_acn": {
+      "type": "array",
+      "required": true
+    },
+    "share": {
+      "type": "array",
+      "required": true
+    },
+    "site_acn": {
+      "type": "string"
+    },
+    "cs_acn": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "owner_info": {
+      "type": "string"
+    },
+    "manager": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "time": {
+      "type": "date"
+    },
+    "status": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

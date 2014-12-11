@@ -1,6 +1,7 @@
 {
   "db": {
-  	"database": "nucloudloopback",
+  	"name": "db",
+    "database": "nucloud",
     "connector": "mongodb"
   }
 }

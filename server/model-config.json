@@ -33,5 +33,9 @@
   "nucomment": {
     "dataSource": "db",
     "public": true
+  },
+  "nusite": {
+    "dataSource": "db",
+    "public": true
   }
 }

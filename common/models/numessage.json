@@ -92,7 +92,7 @@
   },
   "validations": [],
   "relations": {
-     "nucomments": {
+    "nucomments": {
       "type": "hasMany",
       "model": "nucomment",
       "foreignKey": "numessageId"
