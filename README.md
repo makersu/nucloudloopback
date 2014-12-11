@@ -136,7 +136,7 @@ Response Body:
 ]
 ```
 
-
+#nucomment
 ```
 #create nucomment
 Request URL:
@@ -172,4 +172,64 @@ Response Body:
     "numessageId": "5486ac92c83d2d5f5aafa8d8"
   }
 ]
+```
+#nusite
+```
+#create
+Request URL:
+http://0.0.0.0:3000/api/nusites
+Request Method:
+POST
+Parameter: data
+Value:
+{
+  "site_id": "jason_group1.ookon_test001",
+  "public": false,
+  "use_acn": [
+    "jason",
+    "nu_12385"
+  ],
+  "share": [
+    ""
+  ],
+  "site_acn": "jason_group1",
+  "cs_acn": "ookon_test001",
+  "name": "jason_group1",
+  "owner": "jason",
+  "owner_info": "1:jason:jason.monkia@gmail.com:Jason",
+  "manager": "jason",
+  "time": "2014-05-11T23:58:00.000Z",
+  "status": "A",
+  "type": "1"
+}
+
+#
+Request URL
+http://0.0.0.0:3000/api/nusites
+Response Body
+[
+  {
+    "site_id": "jason_group1.ookon_test001",
+    "public": true,
+    "use_acn": [
+      "jason",
+      "mmmm"
+    ],
+    "share": [
+      ""
+    ],
+    "site_acn": "jason_group1",
+    "cs_acn": "ookon_test001",
+    "name": "jason_group1",
+    "owner": "jason",
+    "owner_info": "1:jason:jason.monkia@gmail.com:Jason",
+    "manager": "jason",
+    "time": "2014-05-11T23:58:00.000Z",
+    "status": "A",
+    "type": "1",
+    "id": "5489146e5aaa8a08091bdce8"
+  }
+]
+
+
 ```
