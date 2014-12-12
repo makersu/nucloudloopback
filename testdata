@@ -1,0 +1,25 @@
+{"site_id":"site1","site_acn":"jason_group1","cs_acn":"ookon_test001","name":"jason_group1","owner":"jason","owner_info":"1:jason:jason.monkia@gmail.com:Jason","manager":["jason"],"time":"2014-05-11T23:58:00Z","status":"A","type":"1","public":"N","use_acn":["jason","nu_12385"],"share":[""]}
+
+{"site_id":"site2","site_acn":"jason_group1","cs_acn":"ookon_test001","name":"jason_group1","owner":"jason","owner_info":"1:jason:jason.monkia@gmail.com:Jason","manager":["jason"],"time":"2014-05-11T23:58:00Z","status":"A","type":"1","public":"N","use_acn":["","nu_12385"],"share":["mark"]}
+
+{"site_id":"site3","site_acn":"jason_group1","cs_acn":"ookon_test001","name":"jason_group1","owner":"jason","owner_info":"1:jason:jason.monkia@gmail.com:Jason","manager":["jason"],"time":"2014-05-11T23:58:00Z","status":"A","type":"1","public":"N","use_acn":["jason","nu_12385","mark"],"share":[""]}
+
+{"site_id":"site4","site_acn":"jason_group1","cs_acn":"ookon_test001","name":"jason_group1","owner":"jason","owner_info":"1:jason:jason.monkia@gmail.com:Jason","manager":["jason"],"time":"2014-05-11T23:58:00Z","status":"A","type":"1","public":"N","use_acn":["jason","nu_12385"],"share":["jason"]}
+
+
+{
+	"fields":"site_id", 
+	"where": { 
+		"use_acn": {"inq": ["jason"]}
+	}
+}
+
+{
+	"fields":"site_id", 
+	"where": { or : [
+			{"use_acn": {"inq": ["jason"]}},
+			{"share": {"inq": ["jason"]}}
+		]
+	}
+}
+

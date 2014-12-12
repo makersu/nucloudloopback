@@ -33,8 +33,55 @@ module.exports = function(Numessage) {
       'updateInsert', 
       {
         accepts: {arg: 'data', type: 'object'},
-        returns: {arg: 'numessage', type: 'object'}
+        returns: {arg: 'numessages', type: 'object'}
       }
   );
+
+
+  Numessage.findBy = function(data, cb) {
+  	console.log(data.acn)
+  	console.log(data.email)
+
+  	var whereSiteId={
+			"fields":"site_id", 
+			"where": { "or" : [
+					{"use_acn": {"inq": ["mark"]}},
+					{"share": {"inq": ["mark"]}}
+				]
+			}
+		}
+
+
+		var Nusite=Numessage.app.models.Nusite
+
+		//console.log(Nusite)
+  	Nusite.find(whereSiteId,function(err,nusites){
+  		var siteIds=[]
+  		nusites.forEach(function(nusite) {
+    		//console.log(nusite);
+    		siteIds.push(nusite.site_id)
+			});
+			console.log(siteIds)
+
+			var whereKey =
+				{ "where": { "key": {"inq": siteIds }}}
+
+			Numessage.find(whereKey,function(err,numessages){
+				console.log(numessages.length)
+				cb(err,numessages)
+			});
+
+  	});
+      
+    }
+     
+    Numessage.remoteMethod(
+        'findBy', 
+        {
+          accepts: {arg: 'data', type: 'object'},
+          returns: {arg: 'numessages', type: 'object'}
+        }
+    );
+
 
 };
