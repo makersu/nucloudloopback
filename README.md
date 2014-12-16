@@ -265,7 +265,7 @@ Response Body
     "name": "jason_group1",
     "owner": "jason",
     "owner_info": "1:jason:jason.monkia@gmail.com:Jason",
-    "manager": "jason",
+    "manager": ["jason"],
     "time": "2014-05-11T23:58:00.000Z",
     "status": "A",
     "type": "1",
