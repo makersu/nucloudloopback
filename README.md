@@ -182,6 +182,17 @@ POST
 Parameters:
 { data : {"acn":"mark","email":"yuminsu@gmail.com"} }
 
+{ 
+  data : {
+    "acn":"mark",
+    "email":"yuminsu@gmail.com",
+    "where": { "or": [{ "key": {"inq": ["wheeg7.ookon_test001"]}}, { "key":{"like":"whee"} }] },
+    "order": "upload_time desc",
+    "skip":0,
+    "limit":50
+   }
+}
+
 ```
 
 #nucomment
