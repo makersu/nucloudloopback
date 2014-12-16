@@ -99,6 +99,11 @@ Value: { "where": { "key": {"inq": ["nu12427"]}}}
 Value: { "where": { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "key":"wheeg7.ookon_test001,wheechen2@gmail.com"} }
 Value: { "where": { "key":{"like":"whee"} } }
+##pagination
+{ "where": { "key": {"inq": ["wheeg7.ookon_test001"]}},
+  "skip":0,
+  "limit":50
+}
 
 Response Body:
 [
