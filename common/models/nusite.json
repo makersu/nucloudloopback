@@ -35,7 +35,7 @@
       "type": "string"
     },
     "manager": {
-      "type": "string"
+      "type": "array"
     },
     "name": {
       "type": "string"
