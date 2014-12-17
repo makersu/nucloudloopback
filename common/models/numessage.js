@@ -63,6 +63,8 @@ module.exports = function(Numessage) {
     		//console.log(nusite);
     		siteIds.push(nusite.site_id)
 			});
+			siteIds.push(data.acn)
+			siteIds.push(data.email)
 			console.log(siteIds)
 
 			var conditionKey =
