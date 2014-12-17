@@ -95,10 +95,13 @@ Request Method:
 GET
 Parameter: 
 filter
+Value: { "where": { "owner": "yy0265-yahoo_com_tw" } }
 Value: { "where": { "key": {"inq": ["nu12427"]}}}
+Value: { "where": { "key": {"nin": ["nu12427"]}}}
 Value: { "where": { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}}
-Value: { "where": { "key":"wheeg7.ookon_test001,wheechen2@gmail.com"} }
+Value: { "where": { "upload_time": {"lt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "key":{"like":"whee"} } }
+Value: { "where": { "key":{"nlike":"whee"} } }
 ##pagination
 { "where": { "or": [{ "key": {"inq": ["wheeg7.ookon_test001"]}}, { "key":{"like":"whee"} }] },
   "order": "upload_time desc",
@@ -106,40 +109,25 @@ Value: { "where": { "key":{"like":"whee"} } }
   "limit":50
 }
 
-Response Body:
-[
-  {
-    "url": "http://ookon_test001.nuweb.cc/Site/wheeg7/Forum/forum_view.php?mode=far&path=GROUP_NEWS/&f=2014113&i=1",
-    "view_path": "",
-    "mode": "update",
-    "upload_time": "2014-12-02T10:04:57.000Z",
-    "page_name": "forum_view.php?mode=far&path=GROUP_NEWS/&f=2014113&i=1",
-    "filename": "",
-    "title": "",
-    "allow": "ALLOW_ALL,wheeg7.ookon_test001",
-    "owner": "wheechen",
-    "last_acn": "",
-    "dir_type": "",
-    "type": "BBS",
-    "description": "ggggggguuu",
-    "share_code": "n1247F5D401E260B010764WW",
-    "share_date": null,
-    "share": "",
-    "use_acn": "",
-    "use_date": "",
-    "fun": "use_acn,share",
-    "key": [
-      "wheeg7.ookon_test001",
-      "wheechen2@gmail.com"
-    ],
-    "images": "",
-    "atc": "",
-    "tag": null,
-    "time": "2014-12-02T10:04:57.000Z",
-    "mtime": "2014-12-02T10:04:57.000Z",
-    "id": "5486ac92c83d2d5f5aafa8d8"
-  }
-]
+#find numessage by acn/email
+Request URL:
+http://0.0.0.0:3000/api/numessages/findBy
+Parameter: data
+Value:
+{
+	"acn":"jason",
+	"email":"jason@gmail.com",
+	"where": {
+		"and": [
+			{ "owner": "wheechen"}, 
+			{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}
+		]
+	},
+	"order": "upload_time desc",
+  	"skip":0,
+  	"limit":50
+}
+
 #update or insert numessage
 Request URL:
 http://0.0.0.0:3000/api/numessages/updateInsert
