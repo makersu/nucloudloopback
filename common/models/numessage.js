@@ -39,8 +39,7 @@ module.exports = function(Numessage) {
 
 
   Numessage.findBy = function(data, cb) {
-  	console.log(data.acn)
-  	console.log(data.email)
+  	console.log(JSON.stringify(data));
 
   	var whereSiteId={
 			"fields":"site_id", 
@@ -55,7 +54,6 @@ module.exports = function(Numessage) {
 			}
 		}
 
-
 		var Nusite=Numessage.app.models.Nusite
 
 		//console.log(Nusite)
@@ -67,10 +65,29 @@ module.exports = function(Numessage) {
 			});
 			console.log(siteIds)
 
-			var whereKey =
-				{ "where": { "key": {"inq": siteIds }}}
+			var conditionKey =
+				{"key": {"inq": siteIds } }
 
-			Numessage.find(whereKey,function(err,numessages){
+
+			var filter = {}	
+			filter.where = data.where
+			filter.where.and.push(conditionKey)
+
+			if(data.order){
+				filter.order = data.order
+			}
+			
+			if(data.skip>=0){
+				filter.skip = data.skip
+			}
+			
+			if(data.limit){
+				filter.limit = data.limit
+			}
+			
+			console.log(JSON.stringify(filter));
+
+			Numessage.find(filter,function(err,numessages){
 				console.log(numessages.length)
 				cb(err,numessages)
 			});
@@ -102,7 +119,13 @@ module.exports = function(Numessage) {
 			//var wherefind = {"where": whereUrl}
 
 
-			var where={ "where": { "url":{"like":"http://ookon_test001.nuweb.com/Site/wheeg7/Forum/forum_view.php?mode=far&path=GROUP_NEWS/&f=2014113&i=1"} } }
+			var whereurl={ "where": { "url": { "like": "http://ookon_test001.nuweb.cc" } } }
+			var wherekey={ "where": { "key":{"like":"whee"} } }
+			var where=whereurl
+			//where['limit']=1
+			where.skip=1
+
+			console.log(where)
 
 			//var where={ "where": { "url":{"like":"http:"} } }
 
