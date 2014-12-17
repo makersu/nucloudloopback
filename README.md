@@ -96,6 +96,7 @@ GET
 Parameter: 
 filter
 Value: { "where": { "owner": "yy0265-yahoo_com_tw" } }
+Value: { "where": { "owner": {"neq":"yy0265-yahoo_com_tw" } } }
 Value: { "where": { "key": {"inq": ["nu12427"]}}}
 Value: { "where": { "key": {"nin": ["nu12427"]}}}
 Value: { "where": { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}}
