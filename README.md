@@ -163,24 +163,17 @@ Parameters:
   } 
 }
 
-#find by acn/email
+#delete all numessages which url start with 
 Request URL:
-http://0.0.0.0:3000/api/numessages/findBy
+http://10.0.0.104:3000/api/numessages/urlStartsWith
 Request Method: 
-POST
+DEL
 Parameters:
-{ data : {"acn":"mark","email":"yuminsu@gmail.com"} }
-
-{ 
-  data : {
-    "acn":"mark",
-    "email":"yuminsu@gmail.com",
-    "where": { "or": [{ "key": {"inq": ["wheeg7.ookon_test001"]}}, { "key":{"like":"whee"} }] },
-    "order": "upload_time desc",
-    "skip":0,
-    "limit":50
-   }
+{ data: {
+		{"url":"http://mmookon_test001.nuweb.cc/"}	
+	}
 }
+
 
 ```
 
