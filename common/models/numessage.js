@@ -106,32 +106,19 @@ module.exports = function(Numessage) {
         }
     );
 
-/*
-    Numessage.greet = function(data, cb) {
-    	console.log(new RegExp(data.url))
 
-    	//var whereUrl={ "url": data.url }
+    Numessage.urlStartsWith = function(data, cb) {
+    	console.log(data.url)
+    	var urlQueryString=data.url
+    	urlQueryString=urlQueryString.replace(/\?/g, '\\\?');
 
+    	urlQueryString = '^'+urlQueryString;
 
+   		var whereurl={ "url": { "like": urlQueryString } } 
 
-    	//var whereUrl={ "url": { "like": "http://ookon_test001.nuweb.cc/Site/wheeg7/Forum/forum_view.php?mode=far&path=GROUP_NEWS/&f=2014113&i=1" } }
+			console.log(whereurl)
 
-			//var whereUrlDir = {}
-
-			//var wherefind = {"where": whereUrl}
-
-
-			var whereurl={ "where": { "url": { "like": "http://ookon_test001.nuweb.cc" } } }
-			var wherekey={ "where": { "key":{"like":"whee"} } }
-			var where=whereurl
-			//where['limit']=1
-			where.skip=1
-
-			console.log(where)
-
-			//var where={ "where": { "url":{"like":"http:"} } }
-
-			Numessage.find( where,function(err,numessages){
+			Numessage.destroyAll( whereurl,function(err,numessages){
 				
 				cb(err,numessages)
 
@@ -140,12 +127,13 @@ module.exports = function(Numessage) {
     }
      
     Numessage.remoteMethod(
-        'greet', 
+        'urlStartsWith', 
         {
           accepts: {arg: 'data', type: 'object'},
-          returns: {arg: 'numessages', type: 'string'}
+          returns: {arg: 'numessages', type: 'string'},
+          http: { verb: 'del'}
         }
     );
-*/
+
 
 };
