@@ -1,7 +1,6 @@
 {
   "db": {
-  	"name": "db",
-    "database": "nucloud",
+    "url":"mongodb://192.168.4.41,192.168.4.42,192.168.4.43/nucloud?readPreference=secondary",
     "connector": "mongodb"
   }
 }
