@@ -285,3 +285,32 @@ filter:
 	}
 }
 ```
+
+#mongo
+```
+export LC_ALL=C
+
+rs.initiate(null)
+rs.add("192.168.4.41:27017")
+rs.add("192.168.4.42:27017")
+rs.add("192.168.4.43:27017")
+rs.addArb("192.168.4.93:27017")
+
+rs.slaveOk()
+```
+
+#deploy
+```
+#build
+
+#process manager(slc pm -l 7777)
+$ sudo slc pm-install --port 7777
+$ sudo start strong-pm
+$ tail -f /var/log/upstart/strong-pm.log
+
+#deploy
+$ slc deploy http://localhost:7777
+
+#slc arc
+
+```
