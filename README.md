@@ -103,6 +103,22 @@ Value: { "where": { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "upload_time": {"lt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "key":{"like":"whee"} } }
 Value: { "where": { "key":{"nlike":"whee"} } }
+#search by keywork(e.g., wheechen)
+{
+	"where": {
+  	"and": [
+    	{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
+    	{ "or": [ {"owner": "wheechen" }, 
+    						{"tag":"wheechen"},
+    						{"filename":{"like":"wheechen"} },
+    						{"title":{"like":"wheechen"} },
+    						{"description":{"like":"wheechen"} }   
+  						] 
+    	}
+		]
+	}
+}	
+
 ##pagination
 { "where": { "or": [{ "key": {"inq": ["wheeg7.ookon_test001"]}}, { "key":{"like":"whee"} }] },
   "order": "upload_time desc",
