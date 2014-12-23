@@ -106,18 +106,14 @@ Value: { "where": { "key":{"like":"whee"} } }
 Value: { "where": { "key":{"nlike":"whee"} } }
 #search by keywork(e.g., wheechen)
 {
-	"where": {
+  "where": {
   	"and": [
-    	{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
-    	{ "or": [ {"owner": "wheechen" }, 
-    						{"tag":"wheechen"},
-    						{"filename":{"like":"wheechen"} },
-    						{"title":{"like":"wheechen"} },
-    						{"description":{"like":"wheechen"} }   
-  						] 
-    	}
-		]
-	}
+    	  { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
+    	  { "or": [ {"owner": "wheechen" }, {"tag":"wheechen"}, {"filename":{"like":"wheechen"} }, {"title":{"like":"wheechen"} }, {"description":{"like":"wheechen"} } 
+    	    ] 
+    	  }
+	]
+  }
 }	
 
 ##pagination
@@ -138,13 +134,62 @@ Value:
 	"searchtext":"wheechen mark",
 	"where": {
 		"and": [
-			{ "owner": "wheechen"}, 
+			{ "owner": "jason"}, 
 			{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}
 		]
 	},
 	"order": "upload_time desc",
   	"skip":0,
   	"limit":50
+}
+
+{
+	"where": {
+  	"and": [
+    	{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
+    	{ "or": [
+	    	{ "or": [ {"owner": "wheechen" }, 
+	    						{"tag":"wheechen"},
+	    						{"filename":{"like":"wheechen"} },
+	    						{"title":{"like":"wheechen"} },
+	    						{"description":{"like":"wheechen"} }   
+	  						] 
+	    	},
+	    	{ "or": [ {"owner": "mark" }, 
+	    						{"tag":"mark"},
+	    						{"filename":{"like":"mark"} },
+	    						{"title":{"like":"mark"} },
+	    						{"description":{"like":"mark"} }   
+	  						] 
+	    	}
+	    ]}	
+		]
+	}
+}
+
+//
+{
+	"where": {
+  	"and": [
+    	{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
+
+	    	{ "or": [ {"owner": "wheechen" }, 
+	    						{"tag":"wheechen"},
+	    						{"filename":{"like":"wheechen"} },
+	    						{"title":{"like":"wheechen"} },
+	    						{"description":{"like":"wheechen"} }   
+	  						] 
+	    	},
+	    	{ "or": [ {"owner": "mark" }, 
+	    						{"tag":"mark"},
+	    						{"filename":{"like":"mark"} },
+	    						{"title":{"like":"mark"} },
+	    						{"description":{"like":"mark"} }   
+	  						] 
+	    	}
+	    
+		]
+	}
 }
 
 #update or insert numessage
