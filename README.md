@@ -57,6 +57,7 @@ Value:
   "key": ["wheeg7.ookon_test001","wheechen2@gmail.com"],
   "images": "",
   "atc": "",
+  "tag": ["marksu","yuminsu@gmail.com","nu12427","wkchiang@cs.ccu.edu.tw","singling@ccu.edu.tw","nu14916"],
   "time":"2014-12-02T10:04:57Z",
   "mtime":"2014-12-02T10:04:57Z"
 }
@@ -103,12 +104,26 @@ Value: { "where": { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "upload_time": {"lt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "key":{"like":"whee"} } }
 Value: { "where": { "key":{"nlike":"whee"} } }
+Value: { "where": { "and": [ {"owner": "wheechen" }, { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}} ] } }
+Value: { "where": { "or": [ {"owner": "wheechen" }, {"owner": "jason" } ] } }
 ##pagination
 { "where": { "or": [{ "key": {"inq": ["wheeg7.ookon_test001"]}}, { "key":{"like":"whee"} }] },
   "order": "upload_time desc",
   "skip":0,
   "limit":50
 }
+
+#search by keywork(e.g., wheechen)//deprecated
+{
+  "where": {
+  	"and": [
+    	  { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
+    	  { "or": [ {"owner": "wheechen" }, {"tag":{"inq":["wheechen"]}}, {"filename":{"like":"wheechen"} }, {"title":{"like":"wheechen"} }, {"description":{"like":"wheechen"} } 
+    	    ] 
+    	  }
+	]
+  }
+}	
 
 #find numessage by acn/email
 Request URL:
@@ -118,15 +133,63 @@ Value:
 {
 	"acn":"jason",
 	"email":"jason@gmail.com",
+	"searchtext":"wheechen mark",
 	"where": {
 		"and": [
-			{ "owner": "wheechen"}, 
 			{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}
 		]
 	},
 	"order": "upload_time desc",
   	"skip":0,
   	"limit":50
+}
+//deprecated
+{
+	"where": {
+  	"and": [
+    	{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
+    	{ "or": [
+	    	{ "or": [ {"owner": "wheechen" }, 
+	    						{"tag":"wheechen"},
+	    						{"filename":{"like":"wheechen"} },
+	    						{"title":{"like":"wheechen"} },
+	    						{"description":{"like":"wheechen"} }   
+	  						] 
+	    	},
+	    	{ "or": [ {"owner": "mark" }, 
+	    						{"tag":"mark"},
+	    						{"filename":{"like":"mark"} },
+	    						{"title":{"like":"mark"} },
+	    						{"description":{"like":"mark"} }   
+	  						] 
+	    	}
+	    ]}	
+		]
+	}
+}
+//deprecated
+{
+	"where": {
+  	"and": [
+    	{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
+
+	    	{ "or": [ {"owner": "wheechen" }, 
+	    						{"tag":"wheechen"},
+	    						{"filename":{"like":"wheechen"} },
+	    						{"title":{"like":"wheechen"} },
+	    						{"description":{"like":"wheechen"} }   
+	  						] 
+	    	},
+	    	{ "or": [ {"owner": "mark" }, 
+	    						{"tag":"mark"},
+	    						{"filename":{"like":"mark"} },
+	    						{"title":{"like":"mark"} },
+	    						{"description":{"like":"mark"} }   
+	  						] 
+	    	}
+	    
+		]
+	}
 }
 
 #update or insert numessage
@@ -238,7 +301,7 @@ Value:
   "name": "jason_group1",
   "owner": "jason",
   "owner_info": "1:jason:jason.monkia@gmail.com:Jason",
-  "manager": "jason",
+  "manager": ["jason"],
   "time": "2014-05-11T23:58:00.000Z",
   "status": "A",
   "type": "1"
