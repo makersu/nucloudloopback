@@ -364,6 +364,22 @@ rs.slaveOk()
 
 #deploy
 ```
+#server/datasources.json
+//dev
+{
+  "db": {
+  	"name": "db",
+  	"database": "nucloud",
+    "connector": "mongodb"
+  }
+}
+//production
+{
+  "db": {
+    "url":"mongodb://192.168.4.41,192.168.4.42,192.168.4.43/nucloud?readPreference=secondaryPreferred",
+    "connector": "mongodb"
+  }
+}
 #build
 
 #process manager(slc pm -l 7777)
