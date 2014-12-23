@@ -79,7 +79,7 @@
       "type": "string"
     },
     "tag": {
-      "type": "string"
+      "type": "array"
     },
     "time": {
       "type": "date",

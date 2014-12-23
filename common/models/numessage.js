@@ -37,11 +37,10 @@ module.exports = function(Numessage) {
       }
   );
 
-
   Numessage.findBy = function(data, cb) {
   	console.log(JSON.stringify(data));
 
-  	var whereSiteId={
+  	var conditionSiteId={
 			"fields":"site_id", 
 			"where": { "or" : [
 					{"use_acn": {"inq": [data.acn]}},
@@ -57,7 +56,7 @@ module.exports = function(Numessage) {
 		var Nusite=Numessage.app.models.Nusite
 
 		//console.log(Nusite)
-  	Nusite.find(whereSiteId,function(err,nusites){
+  	Nusite.find(conditionSiteId,function(err,nusites){
   		var siteIds=[]
   		nusites.forEach(function(nusite) {
     		//console.log(nusite);
@@ -74,6 +73,26 @@ module.exports = function(Numessage) {
 			var filter = {}	
 			filter.where = data.where
 			filter.where.and.push(conditionKey)
+
+			//condition for searchtext 
+			if( data.searchtext ){
+				//console.log(data.searchtext);
+				var searcharray = data.searchtext.replace(/[.,?!;()"'+-]/g, " ").replace(/\s+/g, " ").split(" ");//?'+'
+				console.log('searcharray='+searcharray)
+				var orCondition = {"or":[]}
+				for(var i=0;i<searcharray.length;i++){
+					var insideOrCondition={"or":[]}
+					insideOrCondition.or.push({"owner": searcharray[i] })
+					insideOrCondition.or.push({"tag": {"inq": [searcharray[i]] }})
+					insideOrCondition.or.push({"filename":{"like": searcharray[i] } })
+					insideOrCondition.or.push({"title":{"like":searcharray[i] } })
+					insideOrCondition.or.push({"description":{ "like":searcharray[i] } } )
+					console.log(insideOrCondition)
+					orCondition.or.push(insideOrCondition)
+				}
+				//console.log(orCondition)
+				filter.where.and.push(orCondition)
+			}
 
 			if(data.order){
 				filter.order = data.order
