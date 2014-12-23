@@ -135,6 +135,7 @@ Value:
 {
 	"acn":"jason",
 	"email":"jason@gmail.com",
+	"searchtext":"wheechen mark",
 	"where": {
 		"and": [
 			{ "owner": "wheechen"}, 
