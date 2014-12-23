@@ -29,7 +29,7 @@
       "type": "string"
     },
     "allow": {
-      "type": "string",
+      "type": "array",
       "required": true
     },
     "owner": {
@@ -56,10 +56,13 @@
       "type": "string"
     },
     "share": {
-      "type": "string"
+      "type": "array"
+    },
+    "us_like": {
+      "type": "array"
     },
     "use_acn": {
-      "type": "string"
+      "type": "array"
     },
     "use_date": {
       "type": "string"
