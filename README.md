@@ -104,24 +104,26 @@ Value: { "where": { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "upload_time": {"lt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "key":{"like":"whee"} } }
 Value: { "where": { "key":{"nlike":"whee"} } }
-#search by keywork(e.g., wheechen)
-{
-  "where": {
-  	"and": [
-    	  { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
-    	  { "or": [ {"owner": "wheechen" }, {"tag":"wheechen"}, {"filename":{"like":"wheechen"} }, {"title":{"like":"wheechen"} }, {"description":{"like":"wheechen"} } 
-    	    ] 
-    	  }
-	]
-  }
-}	
-
+Value: { "where": { "and": [ {"owner": "wheechen" }, { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}} ] } }
+Value: { "where": { "or": [ {"owner": "wheechen" }, {"owner": "jason" } ] } }
 ##pagination
 { "where": { "or": [{ "key": {"inq": ["wheeg7.ookon_test001"]}}, { "key":{"like":"whee"} }] },
   "order": "upload_time desc",
   "skip":0,
   "limit":50
 }
+
+#search by keywork(e.g., wheechen)//deprecated
+{
+  "where": {
+  	"and": [
+    	  { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}},
+    	  { "or": [ {"owner": "wheechen" }, {"tag":{"inq":["wheechen"]}}, {"filename":{"like":"wheechen"} }, {"title":{"like":"wheechen"} }, {"description":{"like":"wheechen"} } 
+    	    ] 
+    	  }
+	]
+  }
+}	
 
 #find numessage by acn/email
 Request URL:
@@ -134,7 +136,6 @@ Value:
 	"searchtext":"wheechen mark",
 	"where": {
 		"and": [
-			{ "owner": "jason"}, 
 			{ "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}
 		]
 	},
@@ -142,7 +143,7 @@ Value:
   	"skip":0,
   	"limit":50
 }
-
+//deprecated
 {
 	"where": {
   	"and": [
@@ -166,8 +167,7 @@ Value:
 		]
 	}
 }
-
-//
+//deprecated
 {
 	"where": {
   	"and": [
