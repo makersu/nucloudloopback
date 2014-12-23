@@ -42,7 +42,7 @@ Value:
   "page_name": "forum_view.php?mode=far&path=GROUP_NEWS/&f=2014113&i=1",
   "filename": "",
   "title": "",
-  "allow": "ALLOW_ALL,wheeg7.ookon_test001",
+  "allow": ["ALLOW_ALL","wheeg7.ookon_test001"],
   "owner": "wheechen",
   "last_acn": "",
   "dir_type": "",
@@ -50,8 +50,9 @@ Value:
   "description": "ggggggguuu",
   "share_code": "n1247F5D401E260B010764WW",
   "share_date": null,
-  "share": "",
-  "use_acn": "",
+  "share": [""],
+  "us_like":[""],
+  "use_acn": [""],
   "use_date": "",
   "fun": "use_acn,share",
   "key": ["wheeg7.ookon_test001","wheechen2@gmail.com"],
@@ -364,6 +365,22 @@ rs.slaveOk()
 
 #deploy
 ```
+#server/datasources.json
+//dev
+{
+  "db": {
+  	"name": "db",
+  	"database": "nucloud",
+    "connector": "mongodb"
+  }
+}
+//production
+{
+  "db": {
+    "url":"mongodb://192.168.4.41,192.168.4.42,192.168.4.43/nucloud?readPreference=secondaryPreferred",
+    "connector": "mongodb"
+  }
+}
 #build
 
 #process manager(slc pm -l 7777)
