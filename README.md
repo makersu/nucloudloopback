@@ -382,6 +382,7 @@ rs.slaveOk()
   }
 }
 #build
+$ sudo slc build --pack
 
 #process manager(slc pm -l 7777)
 $ sudo slc pm-install --port 7777
@@ -389,7 +390,7 @@ $ sudo start strong-pm
 $ tail -f /var/log/upstart/strong-pm.log
 
 #deploy
-$ slc deploy http://localhost:7777
+$ slc deploy http://localhost:7777 nucloudloopback-0.3.0.tgz
 
 #slc arc
 
