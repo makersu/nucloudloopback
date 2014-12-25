@@ -27,8 +27,7 @@ module.exports = function(Numessage) {
 			
 			}
 		);
-  }
-     
+  };
   Numessage.remoteMethod(
       'updateInsert', 
       {
@@ -37,6 +36,7 @@ module.exports = function(Numessage) {
       }
   );
 
+  //remotemethod for findBy
   Numessage.findBy = function(data, cb) {
   	console.log(JSON.stringify(data));
 
@@ -115,8 +115,7 @@ module.exports = function(Numessage) {
 
   	});
       
-    }
-     
+    };    
     Numessage.remoteMethod(
         'findBy', 
         {
@@ -125,7 +124,104 @@ module.exports = function(Numessage) {
         }
     );
 
+    //remotemethod for findGroupBy
+		Numessage.findGroupBy = function(data, cb) {
+			console.log(JSON.stringify(data));
 
+			//convert upload_time string to date
+			for(var i=0 ;i<data.where.and.length;i++ ){
+				//console.log(data.where.and[i])
+				if(data.where.and[i].upload_time.gt){
+					//console.log(typeof data.where.and[i].upload_time.gt);
+					console.log(data.where.and[i].upload_time.gt)
+					data.where.and[i].upload_time.gt=new Date(data.where.and[i].upload_time.gt)
+				}		
+			}	  	
+
+			//condition for find by site_id
+	  	var conditionSiteId={
+				"fields":"site_id", 
+				"where": { "or" : [
+						{"use_acn": {"inq": [data.acn]}},
+						{"share": {"inq": [data.email]}},
+						{"manager":data.acn},
+						{"manager":data.email},
+						{"owner":data.acn},
+						{"owner":data.email}
+					]
+				}
+			};
+
+			//get Nusite model
+			var Nusite=Numessage.app.models.Nusite;
+
+			//find Nusite by site_id
+	  	Nusite.find(conditionSiteId,function(err,nusites){
+	  		var siteIds=[]
+	  		nusites.forEach(function(nusite) {
+	    		//console.log(nusite);
+	    		siteIds.push(nusite.site_id)
+				});
+				siteIds.push(data.acn)
+				siteIds.push(data.email)
+				console.log(siteIds)
+
+				var conditionKey = {"key": {"inq": siteIds } }
+
+				var filter = {}	
+				filter.where = data.where
+				filter.where.and.push(conditionKey)
+				console.log(JSON.stringify(filter.where))
+				
+				var connector = Numessage.getDataSource().connector;
+				var matchWhere = connector.buildWhere(Numessage.modelName,filter.where)
+				console.log(JSON.stringify(matchWhere) )
+
+				var groups={}
+				groups.owners={}
+				groups.siteids={}
+
+				var numessageCollection = Numessage.getDataSource().connector.collection(Numessage.modelName);
+
+				//groupby owner by mongodb aggregation
+	    	numessageCollection.aggregate([
+	    		{$match: matchWhere },
+	    		{$group: { _id: "$owner", total: { $sum: 1 } } }
+	      ], function(err, groupByRecords) {
+	      	if(err){
+	      		console.log(err)
+	      		cb(err,groupByRecords)
+	      	}
+	    		console.log(groupByRecords)
+	    		groups.owners = groupByRecords
+	    	});
+
+	    	//groupby siteid by mongodb aggregation
+	    	numessageCollection.aggregate([
+	    		{$match: matchWhere },
+	    		{$group: { _id: "$site_id", total: { $sum: 1 } } }
+	      ], function(err, groupByRecords) {
+	      	if(err){
+	      		console.log(err)
+	      		cb(err,groupByRecords)
+	      	}
+	    		console.log(groupByRecords)
+	    		groups.siteids = groupByRecords
+	    		cb(err,groups);
+	    	});	    	
+
+			});//find Nusite by site_id	
+
+		};
+    Numessage.remoteMethod(
+        'findGroupBy', 
+        {
+          accepts: {arg: 'data', type: 'object'},
+          returns: {arg: 'groups', type: 'object'}
+        }
+    );
+
+    //remotemethod for urlStartsWith
     Numessage.urlStartsWith = function(data, cb) {
     	console.log(data.url)
     	var urlQueryString=data.url
@@ -143,8 +239,7 @@ module.exports = function(Numessage) {
 
 			});
 
-    }
-     
+    };
     Numessage.remoteMethod(
         'urlStartsWith', 
         {
