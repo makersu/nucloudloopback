@@ -60,34 +60,8 @@ Value:
   "atc": "",
   "tag": ["marksu","yuminsu@gmail.com","nu12427","wkchiang@cs.ccu.edu.tw","singling@ccu.edu.tw","nu14916"],
   "time":"2014-12-02T10:04:57Z",
-  "mtime":"2014-12-02T10:04:57Z"
-}
-Value:
-{
-  "url": "http://tw212.nuweb.cc/Site/yy0265-yahoo_com_tw/Driver/dir_TaIzwz/file_I9hlU1.docx",
-  "view_path": "aæß™∫∫ÙØ∏@ccu/∫Ù∏Ùµw∫–/∏Í¶w§uß@∞È-103¶®™G∫[104≥¯ßiÆ—/¶®§j_104¶~¥£Æ◊≠pµeÆ—(¶®§j).docx",
-  "mode": "del",
-  "upload_time": "2014-11-13T11:39:23Z",
-  "page_name": "file_I9hlU1.docx",
-  "filename": "¶®§j_104¶~¥£Æ◊≠pµeÆ—(¶®§j).docx",
-  "title": "¶®§j_104¶~¥£Æ◊≠pµeÆ—(¶®§j).docx",
-  "allow": "ALLOW_NONE,yy0265-yahoo_com_tw.tw212",
-  "owner": "yy0265-yahoo_com_tw",
-  "last_acn": "yy0265-yahoo_com_tw",
-  "dir_type": "",
-  "type": "Document",
-  "description": "description",
-  "share_code": "uj2D7E53450E210207341B5E01041D5F4C0F3D041167",
-  "share_date": "2014-11-06T15:15:12Z",
-  "share": "",
-  "use_acn": "",
-  "use_date": "",
-  "fun": "use_acn",
-  "key": ["nu14915","yungru-ccu_edu_tw","nu12427","wkchiang@cs.ccu.edu.tw","singling@ccu.edu.tw","nu14916"],
-  "images": "",
-  "atc": "",
-  "time":"2014-11-06T15:15:12Z",
-  "mtime":"2014-11-06T15:15:12Z"
+  "mtime":"2014-12-02T10:04:57Z",
+  "site_id": "jason_group.ookon_test001"
 }
 
 #query/search filter
@@ -103,8 +77,8 @@ Value: { "where": { "key": {"inq": ["nu12427"]}}}
 Value: { "where": { "key": {"nin": ["nu12427"]}}}
 Value: { "where": { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}}
 Value: { "where": { "upload_time": {"lt": "2014-12-01T00:00:00.000Z"}}}
-Value: { "where": { "key":{"like":"whee"} } }
-Value: { "where": { "key":{"nlike":"whee"} } }
+Value: { "where": { "title":{"like":"whee"} } }
+Value: { "where": { "title":{"nlike":"whee"} } }
 Value: { "where": { "and": [ {"owner": "wheechen" }, { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}} ] } }
 Value: { "where": { "or": [ {"owner": "wheechen" }, {"owner": "jason" } ] } }
 ##pagination
@@ -192,6 +166,22 @@ Value:
 		]
 	}
 }
+
+#find numessages groupby site_id,owner by acn/email
+Request URL:
+http://0.0.0.0:3000/api/numessages/findGroupBy
+Parameter: data
+Value:
+{
+    "acn":"jason",
+    "email":"wheechen2@gmail.com",
+    "where": {
+        "and": [
+            { "upload_time": {"gt": "2014-12-01T00:00:00.000Z"}}
+        ]
+    }
+}
+
 
 #update or insert numessage
 Request URL:
