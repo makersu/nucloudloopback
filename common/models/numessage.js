@@ -128,19 +128,20 @@ module.exports = function(Numessage) {
 		Numessage.findGroupBy = function(data, cb) {
 			console.log(JSON.stringify(data));
 
-			//convert upload_time string to date
-			for(var i=0 ;i<data.where.and.length;i++ ){
-				//console.log(data.where.and[i])
-				if(data.where.and[i].upload_time.gt){
-					//console.log(typeof data.where.and[i].upload_time.gt);
-					console.log(data.where.and[i].upload_time.gt)
-					data.where.and[i].upload_time.gt=new Date(data.where.and[i].upload_time.gt)
+			if(!data.where.and){
+				//convert upload_time string to date
+				for(var i=0 ;i<data.where.and.length;i++ ){
+					if(data.where.and[i].upload_time.gt){
+						//console.log(typeof data.where.and[i].upload_time.gt);
+						console.log(data.where.and[i].upload_time.gt)
+						data.where.and[i].upload_time.gt=new Date(data.where.and[i].upload_time.gt)
+					}
+					if(data.where.and[i].upload_time.lt){
+						//console.log(typeof data.where.and[i].upload_time.gt);
+						console.log(data.where.and[i].upload_time.lt)
+						data.where.and[i].upload_time.lt=new Date(data.where.and[i].upload_time.lt)
+					}	
 				}
-				if(data.where.and[i].upload_time.lt){
-					//console.log(typeof data.where.and[i].upload_time.gt);
-					console.log(data.where.and[i].upload_time.lt)
-					data.where.and[i].upload_time.lt=new Date(data.where.and[i].upload_time.lt)
-				}	
 			}	  	
 
 			//condition for find by site_id
