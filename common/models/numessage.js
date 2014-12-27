@@ -135,7 +135,12 @@ module.exports = function(Numessage) {
 					//console.log(typeof data.where.and[i].upload_time.gt);
 					console.log(data.where.and[i].upload_time.gt)
 					data.where.and[i].upload_time.gt=new Date(data.where.and[i].upload_time.gt)
-				}		
+				}
+				if(data.where.and[i].upload_time.lt){
+					//console.log(typeof data.where.and[i].upload_time.gt);
+					console.log(data.where.and[i].upload_time.lt)
+					data.where.and[i].upload_time.lt=new Date(data.where.and[i].upload_time.lt)
+				}	
 			}	  	
 
 			//condition for find by site_id
@@ -178,8 +183,8 @@ module.exports = function(Numessage) {
 				console.log(JSON.stringify(matchWhere) )
 
 				var groups={}
-				groups.owners={}
-				groups.siteids={}
+				groups.owners=[]
+				groups.siteids=[]
 
 				var numessageCollection = Numessage.getDataSource().connector.collection(Numessage.modelName);
 
@@ -192,25 +197,26 @@ module.exports = function(Numessage) {
 	      		console.log(err)
 	      		cb(err,groupByRecords)
 	      	}
-	    		console.log(groupByRecords)
+	    		console.log("owners="+JSON.stringify(groupByRecords))
 	    		groups.owners = groupByRecords
-	    	});
 
-	    	//groupby siteid by mongodb aggregation
-	    	numessageCollection.aggregate([
-	    		{$match: matchWhere },
-	    		{$group: { _id: "$site_id", total: { $sum: 1 } } }
-	      ], function(err, groupByRecords) {
-	      	if(err){
-	      		console.log(err)
-	      		cb(err,groupByRecords)
-	      	}
-	    		console.log(groupByRecords)
-	    		groups.siteids = groupByRecords
-	    		cb(err,groups);
-	    	});	    	
+	    		//groupby siteid by mongodb aggregation
+		    	numessageCollection.aggregate([
+		    		{$match: matchWhere },
+		    		{$group: { _id: "$site_id", total: { $sum: 1 } } }
+		      ], function(err, groupByRecords) {
+		      	if(err){
+		      		console.log(err)
+		      		cb(err,groupByRecords)
+		      	}
+		    		console.log("siteids="+JSON.stringify(groupByRecords))
+		    		groups.siteids = groupByRecords
+		    		cb(err,groups);
+		    	});	 
 
-			});//find Nusite by site_id	
+		    	});//end fine  	
+
+			});//endfind Nusite by site_id	
 
 		};
     Numessage.remoteMethod(
