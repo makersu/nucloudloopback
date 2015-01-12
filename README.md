@@ -394,7 +394,16 @@ $ slc loopback:model
 $ npm install loopback-connector-mongo --save
 ```
 
-# ab test
+## ab test
 ```
-http://0.0.0.0:3000/api/numessages?filter={%20%22where%22:%20{%20%22owner%22:%20%22yy0265-yahoo_com_tw%22%20}%20}
+http://192.168.4.41:3000/api/numessages?filter={%20%22where%22:%20{%20%22owner%22:%20%22yy0265-yahoo_com_tw%22%20}%20}
+```
+## ab test numessage findby
+```
+curl -H "Content-Type: application/json" --data @data.json http://192.168.4.41:3000/api/numessages/findBy
+ab -k -c 100 -n 100 -p data.json -T application/json http://192.168.4.41:3000/api/numessages/findBy
+//data.json
+{"data":
+  {"acn":"wheechen","email":"wheechen@gmail.com","searchtext":"","limit":500,"skip":0,"order":"upload_time desc","where":{"and":[{"upload_time":{"gt":"2015-01-12T06:47:48Z"}}]}}
+}
 ```
