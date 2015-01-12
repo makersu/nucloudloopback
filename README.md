@@ -393,3 +393,8 @@ $ slc loopback
 $ slc loopback:model
 $ npm install loopback-connector-mongo --save
 ```
+
+# ab test
+```
+http://0.0.0.0:3000/api/numessages?filter={%20%22where%22:%20{%20%22owner%22:%20%22yy0265-yahoo_com_tw%22%20}%20}
+```
