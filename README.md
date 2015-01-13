@@ -391,7 +391,7 @@ $ slc deploy http://localhost:7777 nucloudloopback-0.3.0.tgz
 ```
 $ slc loopback
 $ slc loopback:model
-$ npm install loopback-connector-mongo --save
+$ npm install loopback-connector-mongodb --save
 ```
 
 ## ab test
