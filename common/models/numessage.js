@@ -69,10 +69,21 @@ module.exports = function(Numessage) {
 			var conditionKey =
 				{"key": {"inq": siteIds } }
 
+			var condMain={}
+			condMain.or=[]
+			condMain.or.push(conditionKey)
 
-			var filter = {}	
+			if(data.subscribe){
+				var condSubscribe = {}
+				condSubscribe.and=[]
+				condSubscribe.and.push({"site_id":{"inq":data.subscribe}})
+				condSubscribe.and.push({"fun": "Public"})
+				condMain.or.push(condSubscribe)
+			}
+
+			var filter = {}
 			filter.where = data.where
-			filter.where.and.push(conditionKey)
+			filter.where.and.push(condMain)
 
 			//condition for searchtext 
 			if( data.searchtext ){
@@ -108,8 +119,12 @@ module.exports = function(Numessage) {
 			
 			console.log(JSON.stringify(filter));
 
+			var moment = require('moment')
+			var start=moment()
 			Numessage.find(filter,function(err,numessages){
-				console.log(numessages.length)
+				var end=moment()
+				console.log("moment end.diff(start)="+end.diff(start))
+				console.log('numessages.length='+numessages.length)
 				cb(err,numessages)
 			});
 
