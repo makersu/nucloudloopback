@@ -19,3 +19,9 @@ app.start = function() {
 if (require.main === module) {
   app.start();
 }
+
+//add for Automatically alter the table schemas based on the model definitions.
+//http://docs.strongloop.com/display/public/LB/Creating+a+database+schema+from+models#Creatingadatabaseschemafrommodels-Auto-update
+app.datasources['db'].autoupdate(['numessage','nusite'], function(err) {
+     console.log('autoupdate err='+err);
+});
