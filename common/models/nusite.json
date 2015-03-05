@@ -5,7 +5,8 @@
   "properties": {
     "site_id": {
       "type": "string",
-      "required": true
+      "required": true,
+      "index": true
     },
     "public": {
       "type": "boolean",
@@ -13,11 +14,13 @@
     },
     "use_acn": {
       "type": "array",
-      "required": true
+      "required": true,
+      "index": true
     },
     "share": {
       "type": "array",
-      "required": true
+      "required": true,
+      "index": true
     },
     "site_acn": {
       "type": "string"
@@ -29,13 +32,15 @@
       "type": "string"
     },
     "owner": {
-      "type": "string"
+      "type": "string",
+      "index": true
     },
     "owner_info": {
       "type": "string"
     },
     "manager": {
-      "type": "array"
+      "type": "array",
+      "index": true
     },
     "name": {
       "type": "string"

@@ -5,7 +5,8 @@
   "properties": {
     "url": {
       "type": "string",
-      "required": true
+      "required": true,
+      "index": true
     },
     "view_path": {
       "type": "string"
@@ -16,17 +17,20 @@
     },
     "upload_time": {
       "type": "date",
-      "required": true
+      "required": true,
+      "index": true
     },
     "page_name": {
       "type": "string",
       "required": true
     },
     "filename": {
-      "type": "string"
+      "type": "string",
+      "index": true
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "index": true
     },
     "allow": {
       "type": "array",
@@ -34,7 +38,8 @@
     },
     "owner": {
       "type": "string",
-      "required": true
+      "required": true,
+      "index": true
     },
     "last_acn": {
       "type": "string"
@@ -47,7 +52,8 @@
       "required": true
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "index": true
     },
     "share_code": {
       "type": "string"
@@ -73,7 +79,8 @@
     },
     "key": {
       "type": "array",
-      "required": true
+      "required": true,
+      "index": true
     },
     "images": {
       "type": "string"
@@ -82,7 +89,8 @@
       "type": "string"
     },
     "tag": {
-      "type": "array"
+      "type": "array",
+      "index": true
     },
     "time": {
       "type": "date",
@@ -91,6 +99,11 @@
     "mtime": {
       "type": "date",
       "required": true
+    },
+    "site_id": {
+      "type": "string",
+      "required": true,
+      "index": true
     }
   },
   "validations": [],
@@ -100,6 +113,9 @@
       "model": "nucomment",
       "foreignKey": "numessageId"
     }
+  },
+  "scope": {
+    "limit": 500
   },
   "acls": [],
   "methods": []
