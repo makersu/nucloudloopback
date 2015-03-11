@@ -12,18 +12,43 @@ module.exports = function(Numessage) {
 					url: data.url
 				} 
 			}, 
-			function(err,numessageInstance) { 
+			function(err,numessageInstance) {
 
 				if(numessageInstance && numessageInstance.id){
 					console.log("existed="+numessageInstance.id);
-					data.id=numessageInstance.id
-				}
+					// data.id=numessageInstance.id
+					// Numessage.upsert(data, function(err,obj){
+					// 	if(err){
+					// 		console.log(err)
+					// 	}
+					// 	console.log(obj)
+					// 	cb(err, obj);
+					// }); 
+					// numessageInstance.updateAttributes(data, function(err,obj){
+					// 	if(err){
+					// 		console.log(err)
+					// 	}
+					// 	cb(err, obj);
+					// });
 
-				Numessage.upsert(data, function(err,obj){
-						//console.log(err)
-						//console.log(obj)
+					Numessage.updateAll({_id:numessageInstance.id},data, function(err,obj){
+						if(err){
+							console.log(err)
+						}
+						console.log(obj)
 						cb(err, obj);
-				});
+					});
+				}
+				else{
+					Numessage.create(data, function(err,obj){
+						if(err){
+							console.log(err)	
+						}
+						console.log(obj)
+						cb(err, obj);
+					});
+				}
+				
 			
 			}
 		);
