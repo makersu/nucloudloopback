@@ -1,25 +1,10 @@
-{"site_id":"site1","site_acn":"jason_group1","cs_acn":"ookon_test001","name":"jason_group1","owner":"jason","owner_info":"1:jason:jason.monkia@gmail.com:Jason","manager":["jason"],"time":"2014-05-11T23:58:00Z","status":"A","type":"1","public":"N","use_acn":["jason","nu_12385"],"share":[""]}
+# http://140.123.4.42:3000/explorer/#!/numessages/findBy
+```
+{"data":{"acn":"jason","email":"jason.monkia@gmail.com","searchtext":"","limit":500,"skip":0,"order":"upload_time desc","subscribe":["web.ookon_test001","ookonmusic.ookon_test001","jason0619.ookontest001","jason.tw00a"],"where":{"and":[{"upload_time":{"gt":"2015-02-16T17:19:09Z"}}]}}}
+```
+# http://0.0.0.0:3000/explorer/#!/numessages/updateInsert
+```
+{"data":{"url":"http:\/\/tw1f7.nuweb.cc\/Site\/jason-group\/dir_SDJYiL\/article_lprF5z.html","view_path":"Jason Group\/Test\/test.html","mode":"new","upload_time":"2015-03-11T01:23:05Z","page_name":"article_lprF5z.html","md5":"c5cbe1dba36fc1f1560fedea6ef4d014","allow":["jason-group.tw1f7"],"deny":"DENY_NONE","owner":"jason","last_acn":"jason","filename":"test.html","title":"test","fe":".html","size":"32","time":"2015-03-11T01:23:05Z","mtime":"2015-03-11T01:23:05Z","dir_type":"","tag":[""],"type":"Html","class":"","us_like":[""],"us_unlike":"","cnt_like":"0","cnt_unlike":"0","cnt_view":"0","open_edit":"n","EditContent":"","images":"","description":"test","cnt_share":"0","cnt_facebook":"0","cnt_plurk":"0","cnt_twitter":"0","cnt_tumblr":"0","fun":"Private","key":["jason-group.tw1f7","jason"],"site_id":"jason-group.tw1f7","share":[""],"use_acn":[""]}}
 
-{"site_id":"site2","site_acn":"jason_group1","cs_acn":"ookon_test001","name":"jason_group1","owner":"jason","owner_info":"1:jason:jason.monkia@gmail.com:Jason","manager":["jason"],"time":"2014-05-11T23:58:00Z","status":"A","type":"1","public":"N","use_acn":["","nu_12385"],"share":["mark"]}
-
-{"site_id":"site3","site_acn":"jason_group1","cs_acn":"ookon_test001","name":"jason_group1","owner":"jason","owner_info":"1:jason:jason.monkia@gmail.com:Jason","manager":["jason"],"time":"2014-05-11T23:58:00Z","status":"A","type":"1","public":"N","use_acn":["jason","nu_12385","mark"],"share":[""]}
-
-{"site_id":"site4","site_acn":"jason_group1","cs_acn":"ookon_test001","name":"jason_group1","owner":"jason","owner_info":"1:jason:jason.monkia@gmail.com:Jason","manager":["jason"],"time":"2014-05-11T23:58:00Z","status":"A","type":"1","public":"N","use_acn":["jason","nu_12385"],"share":["jason"]}
-
-
-{
-	"fields":"site_id", 
-	"where": { 
-		"use_acn": {"inq": ["jason"]}
-	}
-}
-
-{
-	"fields":"site_id", 
-	"where": { or : [
-			{"use_acn": {"inq": ["jason"]}},
-			{"share": {"inq": ["jason"]}}
-		]
-	}
-}
-
+{"data":{"url":"http:\/\/tw1f7.nuweb.cc\/Site\/jason-group\/dir_SDJYiL\/article_lprF5z.html","view_path":"Jason Group\/Test\/test.html","mode":"update","upload_time":"2015-03-11T01:23:29Z","page_name":"article_lprF5z.html","md5":"fa6776003770553eb827464d20726cf2","allow":["jason-group.tw1f7"],"deny":"DENY_NONE","owner":"jason","last_acn":"jason","filename":"test.html","title":"test","fe":".html","size":"43","time":"2015-03-11T01:23:29Z","mtime":"2015-03-11T01:23:29Z","dir_type":"","tag":[""],"type":"Html","class":"","us_like":[""],"us_unlike":"","cnt_like":"0","cnt_unlike":"0","cnt_view":"1","open_edit":"n","EditContent":"","images":"","description":"test\n123","cnt_share":"0","cnt_facebook":"0","cnt_plurk":"0","cnt_twitter":"0","cnt_tumblr":"0","fun":"Private","key":["jason-group.tw1f7","jason"],"site_id":"jason-group.tw1f7","share":[""],"use_acn":[""]}}
+```
