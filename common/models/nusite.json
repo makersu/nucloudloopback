@@ -19,7 +19,6 @@
     },
     "share": {
       "type": "array",
-      "required": true,
       "index": true
     },
     "site_acn": {

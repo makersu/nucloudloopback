@@ -17,13 +17,29 @@ module.exports = function(Nusite) {
 				if(nusiteInstance && nusiteInstance.id){
 					console.log("existed="+nusiteInstance.id);
 					data.id=nusiteInstance.id
+					Nusite.updateAll({_id:nusiteInstance.id}, data, function(err,obj){
+						if(err){
+							console.log(err)
+						}
+						console.log(obj)
+						cb(err, obj);
+					});
+				}
+				else{
+					Nusite.create(data, function(err,obj){
+						if(err){
+							console.log(err)	
+						}
+						console.log(obj)
+						cb(err, obj);
+					});
 				}
 
-				Nusite.upsert(data, function(err,obj){
-						//console.log(err)
-						//console.log(obj)
-						cb(err, obj);
-				});
+				// Nusite.upsert(data, function(err,obj){
+				// 		//console.log(err)
+				// 		//console.log(obj)
+				// 		cb(err, obj);
+				// });
 			
 			}
 		);
