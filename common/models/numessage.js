@@ -118,12 +118,16 @@ module.exports = function(Numessage) {
 				var orCondition = {"or":[]}
 				for(var i=0;i<searcharray.length;i++){
 					var insideOrCondition={"or":[]}
+					// var pattern = new RegExp('.*'+searcharray[i]+'.*', "i");//
+					// pattern=''+pattern//
+					var pattern = '.*'+searcharray[i]+'.*'
+					console.log(pattern)//
 					insideOrCondition.or.push({"owner": searcharray[i] })
 					insideOrCondition.or.push({"tag": {"inq": [searcharray[i]] }})
-					insideOrCondition.or.push({"filename":{"like": searcharray[i] } })
-					insideOrCondition.or.push({"title":{"like":searcharray[i] } })
-					insideOrCondition.or.push({"description":{ "like":searcharray[i] } } )
-					console.log(insideOrCondition)
+					insideOrCondition.or.push({"filename":{"like": pattern ,"options":"i" } })
+					insideOrCondition.or.push({"title":{"like": pattern ,"options":"i" } })
+					insideOrCondition.or.push({"description":{ "like": pattern ,"options":"i" } } )
+					console.log(JSON.stringify(insideOrCondition))
 					orCondition.or.push(insideOrCondition)
 				}
 				//console.log(orCondition)
