@@ -3,6 +3,7 @@ nucloudloopback
 # Development Environment, Build & Run
 ## 1.Install MongoDB and StrongLoop
 ```
+$ sudo add-apt-repository ppa:chris-lea/node.js
 $ sudo apt-get update
 $ sudo apt-get install -y mongodb
 $ sudo apt-get install nodejs
