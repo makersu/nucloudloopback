@@ -1,7 +1,7 @@
 nucloudloopback
 ===============
 # Development Environment, Build & Run
-## Install MongoDB and StrongLoop
+## 1.Install MongoDB and StrongLoop
 ```
 $ sudo apt-get update
 $ sudo apt-get install -y mongodb
@@ -10,7 +10,7 @@ $ sudo apt-get install npm
 $ npm install -g strongloop
 ```
 
-## Get from GitHub & Run
+## 2.Get from GitHub & Run
 ```
 $ mongod &
 $ git clone https://github.com/makersu/nucloudloopback.git
@@ -20,7 +20,7 @@ $ slc run
 ```
 
 # Production Eevironment, Build and Deploy
-## [Deploy a MongoDB Replica Set](http://docs.mongodb.org/manual/tutorial/deploy-replica-set/)
+## 1.[Deploy a MongoDB Replica Set](http://docs.mongodb.org/manual/tutorial/deploy-replica-set/)
 ```
 $ export LC_ALL=C
 $ mongo
@@ -31,20 +31,17 @@ $ mongo
 > rs.addArb("192.168.4.93:27017")
 > rs.slaveOk()
 ```
-## Install strongloop process manager for clusters
+## 2.Install strongloop process manager for clusters
 ```
 $ sudo slc pm-install --port 7777
 $ sudo start strong-pm
 $ tail -f /var/log/upstart/strong-pm.log
 ```
-## Build node package for production
+## 3.Build node package and deploy to StrongLoop process manager
 ```
 $ cd nucloudloopback
 $ git pull 
 $ sudo slc build --pack
-```
-## Deploy to StrongLoop Process Manager
-```
 $ slc deploy http://localhost:7777 nucloudloopback-0.3.0.tgz
 $ tail -f /var/log/upstart/strong-pm.log
 ```
