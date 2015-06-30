@@ -1,6 +1,6 @@
 nucloudloopback
 ===============
-#Environment
+# Environment
 ```
 >sudo apt-get update
 >sudo apt-get install -y mongodb
@@ -9,7 +9,7 @@ nucloudloopback
 >npm install -g strongloop
 ```
 
-#installation & run
+# Installation & Run
 ```
 >git clone https://github.com/makersu/nucloudloopback.git
 >cd nucloudloopback
@@ -17,6 +17,39 @@ nucloudloopback
 >mongod &
 >slc run
 ```
+
+# Production Eevironment, Build and Deploy
+## [Deploy a MongoDB Replica Set](http://docs.mongodb.org/manual/tutorial/deploy-replica-set/)
+```
+export LC_ALL=C
+
+rs.initiate(null)
+rs.add("192.168.4.41:27017")
+rs.add("192.168.4.42:27017")
+rs.add("192.168.4.43:27017")
+rs.addArb("192.168.4.93:27017")
+
+rs.slaveOk()
+```
+## Install strongloop process manager for clusters
+```
+$ sudo slc pm-install --port 7777
+$ sudo start strong-pm
+$ tail -f /var/log/upstart/strong-pm.log
+```
+## Build node package for production
+```
+$ git pull 
+$ sudo slc build --pack
+```
+## Deploy to StrongLoop Process Manager
+```
+$ slc deploy http://localhost:7777 nucloudloopback-0.3.0.tgz
+$ tail -f /var/log/upstart/strong-pm.log
+```
+
+
+
 
 #update
 ```
@@ -340,18 +373,7 @@ filter:
 }
 ```
 
-#mongo
-```
-export LC_ALL=C
 
-rs.initiate(null)
-rs.add("192.168.4.41:27017")
-rs.add("192.168.4.42:27017")
-rs.add("192.168.4.43:27017")
-rs.addArb("192.168.4.93:27017")
-
-rs.slaveOk()
-```
 
 #deploy
 ```
@@ -372,16 +394,7 @@ rs.slaveOk()
   }
 }
 
-#process manager(slc pm -l 7777)
-$ sudo slc pm-install --port 7777
-$ sudo start strong-pm
-$ tail -f /var/log/upstart/strong-pm.log
 
-#build
-$ sudo slc build --pack
-
-#deploy(or $slc arc)
-$ slc deploy http://localhost:7777 nucloudloopback-0.3.0.tgz
 
 
 
