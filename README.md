@@ -1,35 +1,35 @@
 nucloudloopback
 ===============
-# Environment
+# Development Environment, Build & Run
+## Install MongoDB and StrongLoop
 ```
->sudo apt-get update
->sudo apt-get install -y mongodb
->sudo apt-get install nodejs
->sudo apt-get install npm
->npm install -g strongloop
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb
+$ sudo apt-get install nodejs
+$ sudo apt-get install npm
+$ npm install -g strongloop
 ```
 
-# Installation & Run
+## Get from GitHub & Run
 ```
->git clone https://github.com/makersu/nucloudloopback.git
->cd nucloudloopback
->npm install
->mongod &
->slc run
+$ mongod &
+$ git clone https://github.com/makersu/nucloudloopback.git
+$ cd nucloudloopback
+$ npm install
+$ slc run
 ```
 
 # Production Eevironment, Build and Deploy
 ## [Deploy a MongoDB Replica Set](http://docs.mongodb.org/manual/tutorial/deploy-replica-set/)
 ```
-export LC_ALL=C
-
-rs.initiate(null)
-rs.add("192.168.4.41:27017")
-rs.add("192.168.4.42:27017")
-rs.add("192.168.4.43:27017")
-rs.addArb("192.168.4.93:27017")
-
-rs.slaveOk()
+$ export LC_ALL=C
+$ mongo
+> rs.initiate(null)
+> rs.add("192.168.4.41:27017")
+> rs.add("192.168.4.42:27017")
+> rs.add("192.168.4.43:27017")
+> rs.addArb("192.168.4.93:27017")
+> rs.slaveOk()
 ```
 ## Install strongloop process manager for clusters
 ```
@@ -39,6 +39,7 @@ $ tail -f /var/log/upstart/strong-pm.log
 ```
 ## Build node package for production
 ```
+$ cd nucloudloopback
 $ git pull 
 $ sudo slc build --pack
 ```
